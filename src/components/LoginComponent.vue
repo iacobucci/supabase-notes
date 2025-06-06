@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { signInWithGoogle, getName, getId, signOut } from '../lib/auth';
+import { signInWithGoogle, getName,  signOut } from '../lib/auth';
 import { ref, defineModel, onMounted } from 'vue'
 
 const loggedIn = defineModel<boolean>();

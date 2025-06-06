@@ -10,7 +10,7 @@ let _notes: Note[] = [];
 const notes = ref(_notes);
 
 async function fetchNotes() {
-	const { data, error } = await supabase.from('notes').select('*')
+	const { data, error } = await supabase.from('notes').select('*').order("value", { ascending: false });
 
 	if (error)
 		console.error(error)
@@ -35,7 +35,7 @@ async function createNote() {
 	let note = new Note();
 	note.note = newNote.value;
 
-	const { data, error } = await supabase.from("notes").insert({ note: note.note, owner: await getId() })
+	const { error } = await supabase.from("notes").insert({ note: note.note, owner: await getId() })
 
 	if (error)
 		console.error(error)
